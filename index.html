@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Test GitHub Pages</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding-top: 100px;
-      background: linear-gradient(to right, #f9f9f9, #e0f7fa);
     }
 
     h1 {
@@ -17,29 +16,34 @@
     }
 
     #box {
-      width: 100px;
-      height: 100px;
+      width: 100vw;
+      height: 100vh;
       background-color: #26A69A;
-      margin: 40px auto;
-      transition: transform 0.5s, background-color 0.5s;
-      border-radius: 10px;
+      transition: transform 1s, background-color 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 14px 24px;
+      font-size: 18px;
       background-color: #00796B;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
     }
 
     button:hover {
       background-color: #004D40;
     }
 
-    /* Bảng chúc mừng */
+    /* Popup */
     #popup {
       position: fixed;
       top: 50%;
@@ -51,19 +55,20 @@
       padding: 30px 20px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
       display: none;
-      z-index: 999;
+      z-index: 100;
     }
 
     #popup h2 {
       margin: 0;
       color: #00796B;
+      text-align: center;
     }
 
     #popup .close-btn {
       position: absolute;
       top: 10px;
       right: 15px;
-      font-size: 18px;
+      font-size: 20px;
       cursor: pointer;
       color: #888;
     }
@@ -75,13 +80,12 @@
 </head>
 <body>
 
-  <h1>Chào mừng bạn đến với GitHub Pages 🎉</h1>
-  <p>Nhấn nút bên dưới để tạo hiệu ứng!</p>
+  <button onclick="diChuyen()">Di chuyển</button>
 
-  <div id="box"></div>
-  <button onclick="diChuyen()">Di chuyển hình vuông</button>
+  <div id="box">
+    <h1>Chào mừng bạn đến với GitHub Pages 🎉</h1>
+  </div>
 
-  <!-- Popup thông báo -->
   <div id="popup">
     <span class="close-btn" onclick="anPopup()">&times;</span>
     <h2>🎉 Chúc mừng bạn đã di chuyển hình vuông!</h2>
@@ -92,7 +96,7 @@
       const box = document.getElementById("box");
       const popup = document.getElementById("popup");
 
-      box.style.transform = "translateX(200px)";
+      box.style.transform = "translateX(50px)";
       box.style.backgroundColor = "#FF7043";
 
       popup.style.display = "block";
