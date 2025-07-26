@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chọn vân tay của bạn</title>
+  <!-- Font Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('bg.jpg') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35%;
+      height: auto;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding-top: 140px;
+      box-sizing: border-box;
+    }
+
+    .message {
+      text-align: center;
+      color: white;
+      font-size: 1.8em;
+      font-style: italic;
+      text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 0.3s;
+      margin-bottom: 40px;
+    }
+
+    .fingerprint-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .fingerprint-item {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.1s ease;
+    }
+
+    .fingerprint-item:active {
+      transform: scale(0.96);
+    }
+
+    .fingerprint-item img {
+      width: 130px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .fingerprint-item p {
+      margin-top: 12px;
+      font-size: 1.3em;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html">
+      <img class="logo" src="logo.png" alt="Logo">
+    </a>
+    <div class="content">
+      <div class="message">
+        Hãy nhìn ngón tay yêu thích của bạn.<br>Bạn có vân tay như thế nào?
+      </div>
+      <div class="fingerprint-grid">
+        <a class="fingerprint-item" href="mausac.html?fingerprint=xoayoc">
+  <img src="vantay.png" alt="Vân tay 1">
+  <p>Đường xoáy ốc</p>
+</a>
+
+<a class="fingerprint-item" href="mausac.html?fingerprint=cungtron">
+  <img src="vantay.png" alt="Vân tay 2">
+  <p>Hình cung tròn</p>
+</a>
+
+<a class="fingerprint-item" href="mausac.html?fingerprint=vonglap">
+  <img src="vantay.png" alt="Vân tay 3">
+  <p>Dạng vòng lặp</p>
+</a>
+
+<a class="fingerprint-item" href="mausac.html?fingerprint=honhop">
+  <img src="vantay.png" alt="Vân tay 4">
+  <p>Vân hỗn hợp</p>
+</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chuyển động</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('bg.jpg') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .logo-wrapper {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .logo-wrapper img {
+      width: 50vw;
+      max-width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    .message-box {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      animation: fadeIn 1s ease forwards;
+      max-width: 90%;
+      padding: 30px 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .message-box img.check-icon {
+      width: 200px;
+      max-width: 50vw;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .main-message {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .info-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2em;
+    }
+
+    .info-block img.icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .color-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .sub-message {
+      font-size: 1.1em;
+      font-style: italic;
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <a href="index.html">
+        <img src="logo.png" alt="Logo">
+      </a>
+    </div>
+
+    <!-- Thông báo -->
+    <div class="message-box">
+      <img src="check.png" alt="Check icon" class="check-icon">
+      <div class="main-message">Tôi đã chạm, tôi đã sẵn sàng thay đổi</div>
+      
+      <div class="info-row">
+        <div class="info-block">
+          <img src="vantay.png" alt="Vân tay" class="icon">
+          <span id="fingerprint-display"></span>
+        </div>
+        <div class="info-block">
+          <div id="color-dot" class="color-dot"></div>
+          <span id="color-display"></span>
+        </div>
+      </div>
+
+      <div class="sub-message">
+        Chúc bạn một năm học mới thật nhiều niềm vui<br>
+        dưới mái nhà chung Đoàn Thị Điểm nhé!
+      </div>
+    </div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const fingerprintKey = params.get('fingerprint') || 'unknown';
+  const colorKey = params.get('color') || 'unknown';
+
+  // ✳️ Chuyển mã fingerprint sang mô tả thân thiện
+  const fingerprintLabels = {
+    spiral: 'Đường xoáy ốc',
+    arch: 'Hình cung tròn',
+    loop: 'Dạng vòng lặp',
+    mixed: 'Vân hỗn hợp',
+    unknown: 'Không xác định'
+  };
+
+  // ✳️ Chuyển mã màu sang mô tả thân thiện
+  const colorLabels = {
+    red: 'Đỏ năng lượng',
+    blue: 'Xanh sáng tạo',
+    green: 'Xanh lá dịu dàng',
+    purple: 'Tím cá tính',
+    orange: 'Cam rực rỡ',
+    unknown: 'Không chọn'
+  };
+
+  const fingerprintText = fingerprintLabels[fingerprintKey] || fingerprintKey;
+  const colorText = colorLabels[colorKey] || colorKey;
+
+  document.getElementById('fingerprint-display').textContent = 'Vân tay: ' + fingerprintText;
+  document.getElementById('color-display').textContent = 'Màu sắc yêu thích: ' + colorText;
+  document.getElementById('color-dot').style.backgroundColor = colorKey;
+</script>
+</body>
+</html>

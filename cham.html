@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chào mừng ĐTĐers</title>
+  <title>Chạm - để chuyển động</title>
   <!-- Font Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400&display=swap" rel="stylesheet">
   <style>
@@ -18,17 +18,9 @@
       position: relative;
       width: 100%;
       height: 100vh;
-    }
-
-    .background {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      background: url('bg.jpg') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
     }
 
     .logo {
@@ -60,50 +52,50 @@
       animation-delay: 0.3s;
     }
 
-    .start-button {
+    .cham-button {
       position: absolute;
       top: 60%;
       left: 50%;
       transform: translateX(-50%);
-      padding: 22px 60px;
-      font-size: 2em;
-      font-weight: 900;
-      font-family: 'Montserrat', sans-serif;
-      color: white;
-      background: linear-gradient(145deg, #ffcc00, #ff9900);
-      border: none;
-      border-radius: 50px;
-      box-shadow:
-        0 6px 0 #b36b00,
-        0 10px 20px rgba(0, 0, 0, 0.3);
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      width: 30%; /* ✅ Chiều ngang 30% màn hình */
+      height: auto;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
       animation-delay: 0.6s;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .start-button:active {
-      transform: translateX(-50%) translateY(2px);
-      box-shadow:
-        0 2px 0 #b36b00,
-        0 4px 8px rgba(0, 0, 0, 0.3);
+    .cham-button:active {
+      transform: translateX(-50%) scale(0.96);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img class="background" src="bg.jpg" alt="Ảnh nền">
     <a href="index.html">
       <img class="logo" src="logo.png" alt="Logo">
     </a>
     <div class="message">
-      Mỗi chúng ta đều có một bản sắc đẹp,<br>hãy cùng nhau khám phá nhé!
+      Tuyệt! Bản sắc của bạn thật đẹp,<br>hãy cùng chạm để chuyển động nhé!
     </div>
-    <a href="vantay.html" class="start-button">BẮT ĐẦU</a>
+    <a id="nextButton">
+      <img class="cham-button" src="cham.png" alt="Chạm để tiếp tục">
+    </a>
   </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const fingerprint = params.get('fingerprint') || 'unknown';
+    const color = params.get('color') || 'unknown';
+
+    const nextButton = document.getElementById('nextButton');
+    nextButton.href = `chuyendong.html?fingerprint=${fingerprint}&color=${color}`;
+  </script>
 </body>
 </html>
