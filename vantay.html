@@ -18,7 +18,7 @@
     .container {
       position: relative;
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       background: url('bg.jpg') no-repeat center center;
       background-size: cover;
       overflow: hidden;
@@ -48,8 +48,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      padding-top: 140px;
+      min-height: 100vh;
+      padding-top: 160px; /* Đảm bảo không bị logo đè */
       box-sizing: border-box;
     }
 
@@ -100,6 +100,40 @@
       font-weight: 600;
       text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     }
+
+    /* RESPONSIVE cho màn hình nhỏ hơn */
+    @media (max-width: 768px) {
+      .logo {
+        width: 25%;
+      }
+
+      .content {
+        padding-top: 140px; /* giảm lại nếu cần */
+      }
+
+      .message {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .fingerprint-item img {
+        width: 100px;
+      }
+
+      .fingerprint-item p {
+        font-size: 1.1em;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .content {
+        padding-top: 120px;
+      }
+
+      .logo {
+        width: 20%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -113,24 +147,24 @@
       </div>
       <div class="fingerprint-grid">
         <a class="fingerprint-item" href="mausac.html?fingerprint=xoayoc">
-  <img src="vantay.png" alt="Vân tay 1">
-  <p>Đường xoáy ốc</p>
-</a>
+          <img src="vantay.png" alt="Vân tay 1">
+          <p>Đường xoáy ốc</p>
+        </a>
 
-<a class="fingerprint-item" href="mausac.html?fingerprint=cungtron">
-  <img src="vantay.png" alt="Vân tay 2">
-  <p>Hình cung tròn</p>
-</a>
+        <a class="fingerprint-item" href="mausac.html?fingerprint=cungtron">
+          <img src="vantay.png" alt="Vân tay 2">
+          <p>Hình cung tròn</p>
+        </a>
 
-<a class="fingerprint-item" href="mausac.html?fingerprint=vonglap">
-  <img src="vantay.png" alt="Vân tay 3">
-  <p>Dạng vòng lặp</p>
-</a>
+        <a class="fingerprint-item" href="mausac.html?fingerprint=vonglap">
+          <img src="vantay.png" alt="Vân tay 3">
+          <p>Dạng vòng lặp</p>
+        </a>
 
-<a class="fingerprint-item" href="mausac.html?fingerprint=honhop">
-  <img src="vantay.png" alt="Vân tay 4">
-  <p>Vân hỗn hợp</p>
-</a>
+        <a class="fingerprint-item" href="mausac.html?fingerprint=honhop">
+          <img src="vantay.png" alt="Vân tay 4">
+          <p>Vân hỗn hợp</p>
+        </a>
       </div>
     </div>
   </div>
